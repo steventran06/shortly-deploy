@@ -19,3 +19,6 @@ Icon
 .floobit
 .floo
 .flooignore
+
+sshKey
+sshKey.pub
