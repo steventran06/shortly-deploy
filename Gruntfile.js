@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: ['app/**/*.js', 'lib/**/*.js', 'public/**/*.js'],
+        dest: 'dist/<%= pkg.name %>.js'
+      }
     },
 
     mochaTest: {
@@ -94,8 +101,10 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'server-dev'
   ]);
 
+  grunt.registerTask('default', ['concat', 'server-dev']);
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
